@@ -111,6 +111,16 @@
     .date { color: var(--teal); font-size: .83rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
     .day-card h3 { margin: 2px 0 0; font-size: 1.32rem; line-height: 1.25; letter-spacing: -.025em; }
     .day-num { flex: 0 0 auto; color: #d7ebeb; font-size: 2.75rem; font-weight: 850; line-height: .9; letter-spacing: -.07em; }
+    .attraction-visual {
+      position: relative; overflow: hidden; margin: 0 0 18px; aspect-ratio: 16 / 10;
+      border: 1px solid #e4ecec; border-radius: 19px; background: #f7f5f1;
+    }
+    .attraction-visual img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .attraction-visual figcaption {
+      position: absolute; left: 10px; bottom: 10px; padding: 5px 9px;
+      border-radius: 999px; background: rgba(6,56,75,.82); color: #fff;
+      font-size: .72rem; font-weight: 750; backdrop-filter: blur(8px);
+    }
     .timeline { margin: 0; padding: 0; list-style: none; }
     .timeline li { position: relative; padding: 0 0 15px 24px; }
     .timeline li:last-child { padding-bottom: 2px; }
@@ -136,6 +146,10 @@
     .choice-label { display: inline-block; margin-bottom: 9px; color: var(--teal); font-size: .76rem; font-weight: 850; letter-spacing: .08em; }
     .choice h4 { margin: 0 0 7px; font-size: 1.05rem; }
     .choice p { margin: 0; color: var(--muted); font-size: .91rem; }
+    .choice-visual {
+      display: block; width: calc(100% + 36px); max-width: none; aspect-ratio: 1 / 1;
+      margin: -18px -18px 16px; object-fit: cover; border-bottom: 1px solid var(--line);
+    }
 
     .booking {
       display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 17px;
@@ -241,6 +255,7 @@
       <div class="day-list">
         <article class="day-card">
           <div class="day-top"><div><span class="date">10 月 1 日 · 周四</span><h3>抵达广州，开往清远</h3></div><span class="day-num">01</span></div>
+          <figure class="attraction-visual"><img src="assets/attractions/taihe-cave-diorama.jpg" alt="太和古洞山林瀑布与岭南入口的等距微缩景观" loading="lazy" decoding="async"><figcaption>太和古洞 · 概念微缩图</figcaption></figure>
           <ol class="timeline">
             <li><span class="time">12:45–15:10</span><strong>宁波飞广州</strong><span class="detail">抵达广州白云国际机场。</span></li>
             <li><span class="time">约 16:30</span><strong>白云机场 T2 取车</strong><span class="detail">核对车况与油量，再开往清远，预计约 1.5 小时。</span></li>
@@ -256,6 +271,7 @@
 
         <article class="day-card">
           <div class="day-top"><div><span class="date">10 月 2 日 · 周五</span><h3>古龙峡清凉日</h3></div><span class="day-num">02</span></div>
+          <figure class="attraction-visual"><img src="assets/attractions/gulong-gorge-diorama.jpg" alt="古龙峡峡谷瀑布、玻璃桥与漂流艇的等距微缩景观" loading="lazy" decoding="async"><figcaption>古龙峡 · 概念微缩图</figcaption></figure>
           <ol class="timeline">
             <li><span class="time">上午</span><strong>逛古龙峡网红河谷</strong><span class="detail">从清远出发约 36–40 分钟；国庆客流大，尽量早到。</span></li>
             <li><span class="time">下午</span><strong>漂流 / 高空项目二选一</strong><span class="detail">雷雨、水位变化可能影响开放，以景区当天公告为准。</span></li>
@@ -270,6 +286,7 @@
 
         <article class="day-card">
           <div class="day-top"><div><span class="date">10 月 3 日 · 周六</span><h3>英西峰林慢游</h3></div><span class="day-num">03</span></div>
+          <figure class="attraction-visual"><img src="assets/attractions/yingxi-diorama.jpg" alt="英西峰林洞天仙境、田园、游船与石桥的等距微缩景观" loading="lazy" decoding="async"><figcaption>英西峰林 · 概念微缩图</figcaption></figure>
           <ol class="timeline">
             <li><span class="time">上午</span><strong>清远出发前往九龙镇</strong><span class="detail">车程约 1 小时 17 分；已购洞天仙境双人票。</span></li>
             <li><span class="time">白天</span><strong>洞天仙境 + 峰林田园</strong><span class="detail">拍照、骑行、喝茶都适合，节奏不用排太满。</span></li>
@@ -284,6 +301,7 @@
 
         <article class="day-card">
           <div class="day-top"><div><span class="date">10 月 4 日 · 周日</span><h3>回广州，轻松逛天河</h3></div><span class="day-num">04</span></div>
+          <figure class="attraction-visual"><img src="assets/attractions/tianhe-diorama.jpg" alt="广州天河商圈现代商场、城市广场与绿化的等距微缩景观" loading="lazy" decoding="async"><figcaption>天河商圈 · 概念微缩图</figcaption></figure>
           <ol class="timeline">
             <li><span class="time">上午</span><strong>清远退房，开回广州</strong><span class="detail">国庆路况留足机动时间，不安排远距离景点。</span></li>
             <li><span class="time">下午</span><strong>入住体育西路全季酒店</strong><span class="detail">接下来 3 晚固定住广州，减少换酒店。</span></li>
@@ -297,6 +315,7 @@
 
         <article class="day-card">
           <div class="day-top"><div><span class="date">10 月 5 日 · 周一</span><h3>广州经典 Citywalk</h3></div><span class="day-num">05</span></div>
+          <figure class="attraction-visual"><img src="assets/attractions/guangzhou-citywalk-diorama.jpg" alt="广州老城骑楼、镇海楼、珠江与广州塔的等距微缩景观" loading="lazy" decoding="async"><figcaption>广州 Citywalk · 概念微缩图</figcaption></figure>
           <ol class="timeline">
             <li><span class="time">上午</span><strong>越秀公园 → 镇海楼</strong><span class="detail">从城市绿意开始，避开午后最晒时段。</span></li>
             <li><span class="time">中午</span><strong>中山纪念堂</strong><span class="detail">根据体力决定入内还是外观停留。</span></li>
@@ -312,8 +331,8 @@
         <article class="day-card">
           <div class="day-top"><div><span class="date">10 月 6 日 · 周二</span><h3>广州自由选择日</h3></div><span class="day-num">06</span></div>
           <div class="choice-grid">
-            <div class="choice"><span class="choice-label">OPTION A · 一整天</span><h4>长隆野生动物世界</h4><p>适合想把一天完整留给动物园的安排；国庆建议早出发。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=长隆野生动物世界&city=广州&callnative=1">打开高德</a></div>
-            <div class="choice"><span class="choice-label">OPTION B · 轻松版</span><h4>天河商圈慢逛</h4><p>正佳广场、天河城、天环广场、太古汇按体力自由组合。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=天河商圈&city=广州&callnative=1">打开高德</a></div>
+            <div class="choice"><img class="choice-visual" src="assets/attractions/chimelong-diorama.jpg" alt="长隆野生动物世界动物与园区的等距微缩景观" loading="lazy" decoding="async"><span class="choice-label">OPTION A · 一整天</span><h4>长隆野生动物世界</h4><p>适合想把一天完整留给动物园的安排；国庆建议早出发。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=长隆野生动物世界&city=广州&callnative=1">打开高德</a></div>
+            <div class="choice"><img class="choice-visual" src="assets/attractions/tianhe-diorama.jpg" alt="广州天河商圈现代购物中心的等距微缩景观" loading="lazy" decoding="async"><span class="choice-label">OPTION B · 轻松版</span><h4>天河商圈慢逛</h4><p>正佳广场、天河城、天环广场、太古汇按体力自由组合。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=天河商圈&city=广州&callnative=1">打开高德</a></div>
           </div>
         </article>
 
