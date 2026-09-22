@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#06384b">
+  <meta name="description" content="2026 国庆广东 7 日旅行手册：清远山水、广州漫游与高德地图直达。">
+  <title>国庆去广东 · 7 日旅行手册</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2306384b'/%3E%3Cpath d='M14 41c8-2 10-16 18-16s10 14 18 16' fill='none' stroke='%23f9b55a' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='19' r='5' fill='%23fff'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #10252c;
+      --muted: #5d6e73;
+      --paper: #f4f9fa;
+      --card: #ffffff;
+      --deep: #06384b;
+      --teal: #0d7f83;
+      --teal-soft: #dff4f1;
+      --sun: #f6a949;
+      --sun-soft: #fff0d9;
+      --line: #d7e4e6;
+      --danger: #a9472a;
+      --shadow: 0 16px 46px rgba(2, 50, 65, .10);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 2%, rgba(246,169,73,.20), transparent 22rem),
+        linear-gradient(180deg, #eaf7f7 0, var(--paper) 18rem, var(--paper) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 17px;
+      line-height: 1.66;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(100% - 32px, 780px); margin: 0 auto; }
+
+    .hero { padding: max(28px, env(safe-area-inset-top)) 0 30px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 0 0 12px; color: var(--teal); font-size: .85rem; font-weight: 750;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; }
+    h1 { margin: 0; max-width: 12ch; font-size: clamp(2.35rem, 12vw, 4.7rem); line-height: .98; letter-spacing: -.055em; }
+    .hero-copy { margin: 18px 0 20px; max-width: 34rem; color: #34545e; font-size: 1.05rem; }
+    .trip-meta { display: flex; flex-wrap: wrap; gap: 9px; }
+    .pill {
+      display: inline-flex; align-items: center; min-height: 38px; padding: 7px 13px;
+      border: 1px solid rgba(6,56,75,.13); border-radius: 999px; background: rgba(255,255,255,.70);
+      color: #274b56; font-size: .88rem; font-weight: 650; backdrop-filter: blur(12px);
+    }
+    .cover {
+      position: relative; overflow: hidden; margin-top: 25px; min-height: 260px;
+      border-radius: 30px; background: var(--deep); box-shadow: var(--shadow);
+    }
+    .cover img { width: 100%; height: 300px; object-fit: cover; display: block; filter: saturate(.88) contrast(1.03); }
+    .cover::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(2,37,49,.9)); }
+    .cover-caption { position: absolute; z-index: 1; left: 20px; right: 20px; bottom: 18px; color: white; }
+    .cover-caption strong { display: block; font-size: 1.28rem; }
+    .cover-caption span { font-size: .83rem; opacity: .82; }
+
+    .route-ribbon {
+      margin: 0 0 22px; padding: 18px; border-radius: var(--radius); background: var(--deep); color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .route-ribbon h2 { margin: 0 0 14px; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; opacity: .72; }
+    .route-line { display: grid; grid-template-columns: repeat(4, 1fr); align-items: start; }
+    .route-stop { position: relative; text-align: center; font-size: .82rem; font-weight: 700; }
+    .route-stop::before { content: ""; position: relative; z-index: 1; display: block; width: 11px; height: 11px; margin: 0 auto 8px; border: 3px solid var(--deep); border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 2px var(--sun); }
+    .route-stop:not(:last-child)::after { content: ""; position: absolute; top: 5px; left: 50%; width: 100%; height: 2px; background: rgba(255,255,255,.28); }
+
+    .quick-nav {
+      position: sticky; z-index: 10; top: max(10px, env(safe-area-inset-top)); display: flex; gap: 8px;
+      margin: 0 auto 30px; padding: 7px; overflow-x: auto; border: 1px solid rgba(6,56,75,.10);
+      border-radius: 999px; background: rgba(255,255,255,.86); box-shadow: 0 10px 30px rgba(7,53,67,.09);
+      backdrop-filter: blur(18px); scrollbar-width: none;
+    }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-nav a { flex: 0 0 auto; min-height: 40px; padding: 8px 14px; border-radius: 999px; text-decoration: none; color: #38555e; font-size: .87rem; font-weight: 700; }
+    .quick-nav a:first-child { background: var(--deep); color: #fff; }
+
+    section { margin: 0 0 42px; }
+    .section-head { margin: 0 0 17px; }
+    .kicker { margin: 0 0 2px; color: var(--teal); font-size: .79rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(1.55rem, 7vw, 2.35rem); line-height: 1.18; letter-spacing: -.035em; }
+    .section-note { margin: 8px 0 0; color: var(--muted); font-size: .95rem; }
+
+    .alert {
+      display: flex; gap: 12px; margin: 0 0 18px; padding: 15px 16px;
+      border: 1px solid #f2d8aa; border-radius: 18px; background: var(--sun-soft); color: #623f13;
+    }
+    .alert strong { display: block; }
+    .alert span { font-size: .91rem; }
+    .alert-mark { flex: 0 0 auto; font-size: 1.1rem; }
+
+    .day-list { display: grid; gap: 17px; }
+    .day-card {
+      position: relative; overflow: hidden; padding: 20px;
+      border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: 0 8px 26px rgba(6,56,75,.055);
+    }
+    .day-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 15px; }
+    .date { color: var(--teal); font-size: .83rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .day-card h3 { margin: 2px 0 0; font-size: 1.32rem; line-height: 1.25; letter-spacing: -.025em; }
+    .day-num { flex: 0 0 auto; color: #d7ebeb; font-size: 2.75rem; font-weight: 850; line-height: .9; letter-spacing: -.07em; }
+    .timeline { margin: 0; padding: 0; list-style: none; }
+    .timeline li { position: relative; padding: 0 0 15px 24px; }
+    .timeline li:last-child { padding-bottom: 2px; }
+    .timeline li::before { content: ""; position: absolute; top: .52em; left: 3px; width: 8px; height: 8px; border-radius: 50%; background: var(--sun); }
+    .timeline li:not(:last-child)::after { content: ""; position: absolute; top: 1em; bottom: -.1em; left: 6px; width: 2px; background: #e3eeee; }
+    .time { display: block; margin-bottom: 1px; color: var(--teal); font-size: .78rem; font-weight: 800; letter-spacing: .045em; }
+    .timeline strong { font-size: .98rem; }
+    .detail { display: block; color: var(--muted); font-size: .9rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 0; }
+    .tag { padding: 5px 10px; border-radius: 999px; background: #eef6f7; color: #476168; font-size: .78rem; font-weight: 700; }
+    .map-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 17px; }
+    .map-link, .primary-link {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 10px 14px;
+      border-radius: 14px; background: var(--teal-soft); color: #075f63; text-decoration: none; font-size: .88rem; font-weight: 750;
+    }
+    .map-link::after, .primary-link::after { content: "↗"; font-size: .9em; }
+    .primary-link { background: var(--deep); color: white; }
+
+    .choice-grid, .info-grid { display: grid; gap: 14px; }
+    .choice {
+      padding: 18px; border: 1px solid var(--line); border-radius: 20px; background: #fff;
+    }
+    .choice-label { display: inline-block; margin-bottom: 9px; color: var(--teal); font-size: .76rem; font-weight: 850; letter-spacing: .08em; }
+    .choice h4 { margin: 0 0 7px; font-size: 1.05rem; }
+    .choice p { margin: 0; color: var(--muted); font-size: .91rem; }
+
+    .booking {
+      display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 17px;
+      border: 1px solid var(--line); border-radius: 19px; background: #fff;
+    }
+    .booking-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; background: var(--teal-soft); font-size: 1.1rem; }
+    .booking h3 { margin: 0 0 3px; font-size: 1rem; }
+    .booking p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .booking .map-link { margin-top: 10px; min-height: 38px; padding: 7px 11px; border-radius: 11px; font-size: .82rem; }
+
+    .food-card {
+      position: relative; overflow: hidden; padding: 24px; border-radius: 26px; background: var(--deep); color: #fff; box-shadow: var(--shadow);
+    }
+    .food-card::before { content: ""; position: absolute; width: 180px; height: 180px; right: -70px; top: -80px; border: 30px solid rgba(246,169,73,.22); border-radius: 50%; }
+    .food-card h3 { position: relative; margin: 0 0 7px; font-size: 1.4rem; }
+    .food-card p { position: relative; margin: 0 0 18px; color: rgba(255,255,255,.75); }
+    .food-card .primary-link { position: relative; background: var(--sun); color: #342006; }
+
+    details { border: 1px solid #ecd6c9; border-radius: 20px; background: #fff8f4; }
+    summary { padding: 17px 18px; cursor: pointer; color: #793e2b; font-weight: 800; }
+    .alt-body { padding: 0 18px 18px; color: #694b41; font-size: .92rem; }
+    .alt-body p { margin: 0 0 12px; }
+
+    .checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .check { padding: 13px 14px; border: 1px solid var(--line); border-radius: 15px; background: #fff; font-size: .9rem; }
+    .check::before { content: "✓"; margin-right: 8px; color: var(--teal); font-weight: 900; }
+
+    .source-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .source-links a { color: var(--teal); font-size: .88rem; font-weight: 700; }
+    footer { padding: 2px 0 calc(38px + env(safe-area-inset-bottom)); color: #6a7b80; font-size: .8rem; text-align: center; }
+
+    @media (min-width: 720px) {
+      .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 30px; align-items: end; }
+      .cover { margin-top: 0; }
+      .choice-grid, .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .booking.wide { grid-column: 1 / -1; }
+    }
+    @media (max-width: 420px) {
+      .shell { width: min(100% - 24px, 780px); }
+      .day-card { padding: 18px 16px; }
+      .checklist { grid-template-columns: 1fr; }
+      .map-actions { display: grid; grid-template-columns: 1fr 1fr; }
+      .map-link { padding-inline: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      body { background: #fff; }
+      .quick-nav { display: none; }
+      .day-card, .booking, .choice { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero shell">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">2026 National Day</p>
+        <h1>国庆去广东</h1>
+        <p class="hero-copy">从清远的山水慢下来，再回广州逛街吃饭。7 天路线、住宿与地图入口都放在这一页。</p>
+        <div class="trip-meta">
+          <span class="pill">10 月 1–7 日</span>
+          <span class="pill">宁波 ⇄ 广州</span>
+          <span class="pill">自驾 · 2 人</span>
+        </div>
+      </div>
+      <figure class="cover">
+        <img src="assets/taihe-cave.png" alt="清远太和古洞入口">
+        <figcaption class="cover-caption"><strong>山水开场，城市收尾</strong><span>清远 · 太和古洞</span></figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="route-ribbon" aria-label="旅行路线">
+      <h2>本次路线</h2>
+      <div class="route-line">
+        <div class="route-stop">宁波</div>
+        <div class="route-stop">广州</div>
+        <div class="route-stop">清远</div>
+        <div class="route-stop">广州</div>
+      </div>
+    </div>
+
+    <nav class="quick-nav" aria-label="页面导航">
+      <a href="#schedule">每日行程</a>
+      <a href="#bookings">预订信息</a>
+      <a href="#food">广州吃饭</a>
+      <a href="#packing">出发清单</a>
+    </nav>
+
+    <section id="schedule">
+      <div class="section-head">
+        <p class="kicker">7-day plan</p>
+        <h2>每日行程</h2>
+        <p class="section-note">按已订机票、租车和住宿整理；所有地点按钮均可跳转高德地图。</p>
+      </div>
+
+      <div class="alert">
+        <div class="alert-mark">!</div>
+        <div><strong>租车证件别忘了</strong><span>取车时带身份证和驾驶证原件；10 月 7 日 16:30 前在白云机场 T2 还车。</span></div>
+      </div>
+
+      <div class="day-list">
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 1 日 · 周四</span><h3>抵达广州，开往清远</h3></div><span class="day-num">01</span></div>
+          <ol class="timeline">
+            <li><span class="time">12:45–15:10</span><strong>宁波飞广州</strong><span class="detail">抵达广州白云国际机场。</span></li>
+            <li><span class="time">约 16:30</span><strong>白云机场 T2 取车</strong><span class="detail">核对车况与油量，再开往清远，预计约 1.5 小时。</span></li>
+            <li><span class="time">傍晚</span><strong>入住有居民宿</strong><span class="detail">到太和古洞停车场后，按民宿安排换乘接驳车。</span></li>
+            <li><span class="time">晚餐</span><strong>清远鸡 + 北江河鲜</strong><span class="detail">第一天不再赶景点，早点休息。</span></li>
+          </ol>
+          <div class="tags"><span class="tag">住：有居民宿</span><span class="tag">自驾约 1.5h</span></div>
+          <div class="map-actions">
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=广州白云国际机场T2航站楼&city=广州&callnative=1">机场 T2</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=广东清远清新区太和镇太和古洞风景区太和路天然山水游泳场东北方向50米&city=清远&callnative=1">有居民宿</a>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 2 日 · 周五</span><h3>古龙峡清凉日</h3></div><span class="day-num">02</span></div>
+          <ol class="timeline">
+            <li><span class="time">上午</span><strong>逛古龙峡网红河谷</strong><span class="detail">从清远出发约 36–40 分钟；国庆客流大，尽量早到。</span></li>
+            <li><span class="time">下午</span><strong>漂流 / 高空项目二选一</strong><span class="detail">雷雨、水位变化可能影响开放，以景区当天公告为准。</span></li>
+            <li><span class="time">晚上</span><strong>入住全季酒店</strong><span class="detail">玩水后不赶夜路，返回清远市区休息。</span></li>
+          </ol>
+          <div class="tags"><span class="tag">速干衣</span><span class="tag">防水袋</span><span class="tag">防滑鞋</span><span class="tag">换洗衣物</span></div>
+          <div class="map-actions">
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=古龙峡生态旅游区&city=清远&callnative=1">古龙峡</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=全季酒店清远广清大道清城站店&city=清远&callnative=1">全季酒店</a>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 3 日 · 周六</span><h3>英西峰林慢游</h3></div><span class="day-num">03</span></div>
+          <ol class="timeline">
+            <li><span class="time">上午</span><strong>清远出发前往九龙镇</strong><span class="detail">车程约 1 小时 17 分；已购洞天仙境双人票。</span></li>
+            <li><span class="time">白天</span><strong>洞天仙境 + 峰林田园</strong><span class="detail">拍照、骑行、喝茶都适合，节奏不用排太满。</span></li>
+            <li><span class="time">午餐</span><strong>尝九龙豆腐</strong><span class="detail">喜欢喝茶的话，可以顺便看看英德红茶。</span></li>
+            <li><span class="time">傍晚</span><strong>返回清远</strong><span class="detail">继续入住全季酒店。</span></li>
+          </ol>
+          <div class="map-actions">
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=英西峰林走廊&city=清远&callnative=1">英西峰林</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=洞天仙境&city=清远&callnative=1">洞天仙境</a>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 4 日 · 周日</span><h3>回广州，轻松逛天河</h3></div><span class="day-num">04</span></div>
+          <ol class="timeline">
+            <li><span class="time">上午</span><strong>清远退房，开回广州</strong><span class="detail">国庆路况留足机动时间，不安排远距离景点。</span></li>
+            <li><span class="time">下午</span><strong>入住体育西路全季酒店</strong><span class="detail">接下来 3 晚固定住广州，减少换酒店。</span></li>
+            <li><span class="time">傍晚</span><strong>正佳广场 / 天河商圈</strong><span class="detail">到店后再决定逛街强度，晚餐直接使用下方餐厅导航。</span></li>
+          </ol>
+          <div class="map-actions">
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=全季酒店广州体育西路天河城店&city=广州&callnative=1">广州全季</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=正佳广场&city=广州&callnative=1">正佳广场</a>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 5 日 · 周一</span><h3>广州经典 Citywalk</h3></div><span class="day-num">05</span></div>
+          <ol class="timeline">
+            <li><span class="time">上午</span><strong>越秀公园 → 镇海楼</strong><span class="detail">从城市绿意开始，避开午后最晒时段。</span></li>
+            <li><span class="time">中午</span><strong>中山纪念堂</strong><span class="detail">根据体力决定入内还是外观停留。</span></li>
+            <li><span class="time">下午至夜晚</span><strong>北京路 → 大佛古寺 → 珠江新城</strong><span class="detail">夜景收尾；步行量较大，穿舒服的鞋。</span></li>
+          </ol>
+          <div class="map-actions">
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=越秀公园&city=广州&callnative=1">越秀公园</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=北京路步行街&city=广州&callnative=1">北京路</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=珠江新城&city=广州&callnative=1">珠江新城</a>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 6 日 · 周二</span><h3>广州自由选择日</h3></div><span class="day-num">06</span></div>
+          <div class="choice-grid">
+            <div class="choice"><span class="choice-label">OPTION A · 一整天</span><h4>长隆野生动物世界</h4><p>适合想把一天完整留给动物园的安排；国庆建议早出发。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=长隆野生动物世界&city=广州&callnative=1">打开高德</a></div>
+            <div class="choice"><span class="choice-label">OPTION B · 轻松版</span><h4>天河商圈慢逛</h4><p>正佳广场、天河城、天环广场、太古汇按体力自由组合。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=天河商圈&city=广州&callnative=1">打开高德</a></div>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-top"><div><span class="date">10 月 7 日 · 周三</span><h3>还车，飞回宁波</h3></div><span class="day-num">07</span></div>
+          <ol class="timeline">
+            <li><span class="time">上午</span><strong>退房后轻松活动</strong><span class="detail">不再安排远距离项目，留意返程行李。</span></li>
+            <li><span class="time">16:30 前</span><strong>白云机场 T2 还车</strong><span class="detail">预留加油、验车和航站楼步行时间。</span></li>
+            <li><span class="time">18:25–20:35</span><strong>广州飞宁波</strong><span class="detail">行程结束。</span></li>
+          </ol>
+          <div class="map-actions"><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=广州白云国际机场T2航站楼&city=广州&callnative=1">机场 T2</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="bookings">
+      <div class="section-head"><p class="kicker">Confirmed</p><h2>已订信息</h2><p class="section-note">以原始订单截图为准；出发前再在订单 App 内核对航班、房型和门店。</p></div>
+      <div class="info-grid">
+        <article class="booking wide"><div class="booking-icon">✈</div><div><h3>往返机票</h3><p>10/1 宁波 12:45 → 广州 15:10<br>10/7 广州 18:25 → 宁波 20:35</p></div></article>
+        <article class="booking"><div class="booking-icon">🚙</div><div><h3>租车</h3><p>10/1 16:30 取车 · 10/7 16:30 还车<br>广州白云机场 T2 店</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=广州白云国际机场T2航站楼租车&city=广州&callnative=1">门店位置</a></div></article>
+        <article class="booking"><div class="booking-icon">⌂</div><div><h3>10/1–10/2</h3><p>有居民宿（清远太和古洞古龙峡店）· 1 晚</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=有居民宿清远太和古洞古龙峡店&city=清远&callnative=1">高德地图</a></div></article>
+        <article class="booking"><div class="booking-icon">⌂</div><div><h3>10/2–10/4</h3><p>全季酒店（清远广清大道清城站店）· 2 晚</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=全季酒店清远广清大道清城站店&city=清远&callnative=1">高德地图</a></div></article>
+        <article class="booking"><div class="booking-icon">⌂</div><div><h3>10/4–10/7</h3><p>全季酒店（广州体育西路天河城店）· 3 晚</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=全季酒店广州体育西路天河城店&city=广州&callnative=1">高德地图</a></div></article>
+        <article class="booking wide"><div class="booking-icon">🎫</div><div><h3>已购门票</h3><p>英西峰林 · 洞天仙境双人票（原稿显示 2 张未使用）。古龙峡门票购买时间仍待确认。</p><a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=洞天仙境&city=清远&callnative=1">景区位置</a></div></article>
+      </div>
+    </section>
+
+    <section id="food">
+      <div class="section-head"><p class="kicker">Guangzhou food</p><h2>广州吃饭</h2></div>
+      <div class="food-card">
+        <h3>NAV 广州六区餐厅地图</h3>
+        <p>餐厅不在本手册重复列出，直接进入专属导航选择。</p>
+        <a class="primary-link" target="_blank" rel="noopener" href="https://nav-guangzhou-2026.netlify.app/">打开吃饭地图</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><p class="kicker">Alternative</p><h2>北线备选</h2></div>
+      <details>
+        <summary>连州地下河 + 千年瑶寨（展开查看）</summary>
+        <div class="alt-body">
+          <p>原稿中的北线路线为：英西峰林 → 连州地下河 → 连南千年瑶寨 → 广州。它会占用 10 月 4–5 日，并与已订的广州 10 月 4–7 日住宿冲突，只有愿意改订酒店时再启用。</p>
+          <div class="map-actions">
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=连州地下河&city=清远&callnative=1">连州地下河</a>
+            <a class="map-link" target="_blank" rel="noopener" href="https://uri.amap.com/search?keyword=千年瑶寨&city=清远&callnative=1">千年瑶寨</a>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="packing">
+      <div class="section-head"><p class="kicker">Before leaving</p><h2>出发前清单</h2></div>
+      <div class="checklist">
+        <div class="check">身份证原件</div><div class="check">驾驶证原件</div>
+        <div class="check">速干衣与换洗衣物</div><div class="check">防水袋与防滑鞋</div>
+        <div class="check">洞内薄外套</div><div class="check">机票 / 酒店 / 门票复核</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><p class="kicker">References</p><h2>原稿参考</h2></div>
+      <div class="source-links">
+        <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/discovery/item/6a7a6a120000000033019d95">清远 5 天 4 夜参考</a>
+        <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/discovery/item/69d27bd60000000023016482">广州 Citywalk 参考</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">根据原始行程与订单截图整理 · 地点与开放情况以出发当日为准</footer>
+</body>
+</html>
